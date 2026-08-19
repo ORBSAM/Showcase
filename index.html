@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav class="side-nav">
+      <a href="#hero" title="Profile"><span>☀</span> Profile</a>
+      <a href="#skills" title="Skills"><span>★</span> Skills</a>
+      <a href="#projects" title="Projects"><span>☾</span> Projects</a>
+      <a href="#currents" title="Currents"><span>✔</span> Currents</a>
+      <a href="#surface" title="Contact"><span>🙮</span> Contact</a>
+    </nav>
+
+    <div class="stars-layer-one"></div>
+    <div class="stars-layer-two"></div>
+    <section id="hero">
+      <div class="sun-container">
+        <div class="sun"></div>
+        <div class="hero-title-container">
+          <div class="hero-ring"></div>
+          <h1 class="hero-title">Samantha Urgo</h1>
+          <p class="hero-subtitle">Lifelong Learner</p>
+        </div>
+      </div>
+      <div class="section-title">Scroll To Explore</div>
+    </section>
+
+    <section class="feature" id="skills">
+      <h2 class="section-title">Skills & Tools</h2>
+      <h2>Core Languages</h2>
+      <div class="skills-grid">
+        <div class="node green" data-tooltip="I use this frequently to make these websites">HTML(5)</div>
+        <div class="node green" data-tooltip="Ditto, I use this just as often!">CSS</div>
+        <div class="node red" data-tooltip="Meh, I can live without this... also why is it ~Java~script?">
+          JavaScript
+        </div>
+        <div class="node green" data-tooltip="Lowest level language that I enjoy reading.">C</div>
+        <div class="node red" data-tooltip="Made a screensaver with it. Only works on Windows. Would not recommend.">
+          C#
+        </div>
+        <div class="node red" data-tooltip="What?">Ruby</div>
+        <div class="node red" data-tooltip="Semi-redundant language I still want to learn.">Perl</div>
+        <div
+          class="node orange"
+          data-tooltip="Much simpler than Fortran... but why use it if you aren't actively an engineer?">
+          R
+        </div>
+        <div class="node red" data-tooltip="Read an old guide from 1997 on it.">Fortran</div>
+        <div class="node orange" data-tooltip="I prefer my languages closer to the hardware, please.">Python</div>
+        <div class="node orange" data-tooltip="C but Java.">C++</div>
+        <div class="node green" data-tooltip="Java came out after Python.">Java</div>
+        <div class="node orange" data-tooltip="I know just enough to read it.">Assembly</div>
+        <div class="node red" data-tooltip="Fun, but weird.">Prolog</div>
+        <div class="node red" data-tooltip="ew">GoLang</div>
+      </div>
+
+      <h2>Frameworks & Tools</h2>
+      <div class="tools-grid">
+        <div class="node red" data-tooltip="Did it in one class. That was all, really.">Spring Boot</div>
+        <div class="node red" data-tooltip="Did it in one class. That was all, really.">Tomcat</div>
+        <div class="node red" data-tooltip="Did it in one class. That was all, really.">Gradle</div>
+        <div class="node red" data-tooltip="Did it in one class. That was all, really.">Angular</div>
+        <div class="node red" data-tooltip="It hates me.">wxWidgets</div>
+      </div>
+
+      <h2>Programs</h2>
+      <div class="tools-grid">
+        <div
+          class="node orange"
+          data-tooltip="Technically IntelliJ is better, but I prefer the UI of Eclipse. I just do C and C++ in the CLI.">
+          Eclipse IDE
+        </div>
+        <div class="node green" data-tooltip="This is the best.">CLI</div>
+        <div class="node red" data-tooltip="ok?">Vim</div>
+        <div class="node orange" data-tooltip="I don't do much Python, but I can use it.">PyCharm</div>
+        <div class="node green" data-tooltip="Good for Java. ">IntelliJ IDE</div>
+        <div class="node orange" data-tooltip="Meh.">Visual Studio</div>
+      </div>
+    </section>
+
+    <section class="feature" id="projects">
+      <h2 class="section-title">Current Projects</h2>
+      <div class="system-container">
+        <div class="planet active">
+          <div class="planet-sphere core"></div>
+          <div class="planet-details">
+            <h3>Mental States</h3>
+            <p>A simple screensaver that showcases the simple capabilities of C#</p>
+            <a href="https://github.com/ORBSAM/MentalStates" class="btn">Explore more</a>
+          </div>
+        </div>
+        <div class="planet active">
+          <div class="planet-sphere core"></div>
+          <div class="planet-details">
+            <h3>TCP File Transfer Tool</h3>
+            <p>
+              File transfer tool b/w multiple machines; neater than bluetooth or using a USB stick everytime I wanted to
+              transfer anything.
+            </p>
+            <p>(Coming Soon)</p>
+          </div>
+        </div>
+        <div class="planet active">
+          <div class="planet-sphere core"></div>
+          <div class="planet-details">
+            <h3>Metadata Modifier</h3>
+            <p>Modifies or deletes the metadata of user-selected files.</p>
+            <p>(Coming Soon)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature" id="currents">
+      <h2 class="section-title">Current OS</h2>
+      <div class="img-grid">
+        <div class="img-node" data-tooltip="Fedora: Beginner friendly OS; used for daily tasks and coding.">
+          <img src="images/fedora_linux.png" alt="Fedora Linux logo" />
+        </div>
+
+        <div class="img-node" data-tooltip="Windows: Bloatware, but great for gaming and testing C# and .NET">
+          <img src="images/windows_logo.png" alt="Windows logo" />
+        </div>
+      </div>
+    </section>
+
+    <footer id="surface">
+      <div class="horizon"></div>
+      <div class="surface-content">
+        <h2>Establish Contact</h2>
+        <p>Interested? Hit the button below to contact me.</p>
+        <a style="height: 11px; margin-top: 16vh" href="" class="transmission-btn"></a>
+      </div>
+    </footer>
+  </body>
+</html>

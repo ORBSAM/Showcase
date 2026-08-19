@@ -1,0 +1,519 @@
+/* --- set all to 0 --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory; /*vertical snapping*/
+}
+
+body {
+  background-color: #0b0b14;
+  color: #e2e2ec;
+  font-family: system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+section,
+footer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 40px 20px;
+  height: auto;
+  scroll-snap-align: start; /* Snaps the top of each section to the top of the screen */
+  overflow: hidden; /* Keeps things contained */
+}
+
+/* --- base Styles Shared by Both Layers --- */
+.stars-layer-one,
+.stars-layer-two {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* --- Layer 1: Medium Stars (Slower Twinkle) --- */
+.stars-layer-one {
+  box-shadow:
+    12vw 15vh 0 #fff,
+    25vw 70vh 1px #fff,
+    45vw 30vh 0 rgba(255, 255, 255, 0.8),
+    68vw 85vh 0 #fff,
+    89vw 20vh 1px #fff,
+    55vw 60vh 0 rgba(255, 255, 255, 0.9),
+    15vw 85vh 1px #fff,
+    78vw 40vh 0 #fff;
+  animation: cosmicTwinkleOne 5s ease-in-out infinite alternate;
+}
+
+/* --- Layer 2: Tiny Distant Stars (Faster Twinkle + Slight Drift) --- */
+.stars-layer-two {
+  box-shadow:
+    5vw 40vh 0 rgba(255, 255, 255, 0.5),
+    32vw 12vh 0 #fff,
+    50vw 90vh 0 rgba(255, 255, 255, 0.7),
+    73vw 10vh 0 #fff,
+    92vw 65vh 0 rgba(255, 255, 255, 0.6),
+    22vw 50vh 0 #fff,
+    60vw 35vh 0 #fff,
+    82vw 88vh 0 rgba(255, 255, 255, 0.4);
+  animation: cosmicTwinkleTwo 3.5s ease-in-out infinite alternate;
+}
+
+/* --- layer 1 animation--- */
+@keyframes cosmicTwinkleOne {
+  0% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateY(-5px);
+  }
+}
+
+/* --- layer 2 animation --- */
+@keyframes cosmicTwinkleTwo {
+  0% {
+    opacity: 0.8;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0.1;
+    transform: translateX(5px) translateY(-2px);
+  }
+}
+
+/* dynamic-like navigation bar */
+.side-nav {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 100;
+  background: rgba(11, 11, 20, 0.7);
+  padding: 15px 10px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.side-nav a {
+  color: #e2e2ec;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.side-nav a:hover {
+  background: rgba(79, 195, 247, 0.2);
+  color: #4fc3f7;
+}
+
+/* --- hero section & the sun... --- */
+#hero {
+  background: radial-gradient(circle at center, #161233 0%, #0b0b14 70%);
+}
+
+.sun-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.sun {
+  width: 50vh;
+  height: 50vh;
+  background: radial-gradient(circle at 30% 30%, #ffd54f, #ff6f00);
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(255, 111, 0, 0.75);
+  animation: floatSun 6s ease-in-out infinite;
+}
+
+/* Container to center and anchor all hero visuals */
+.hero-title-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  text-align: center;
+}
+
+/* Standout Title Text */
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  color: #ffffff;
+  /* Glowing text shadow layer */
+  text-shadow: 
+    0 0 10px rgba(79, 195, 247, 0.8),
+    0 0 20px rgba(79, 195, 247, 0.4),
+    0 0 40px rgba(79, 195, 247, 0.2);
+  margin-bottom: 10px;
+  z-index: 2;
+  animation: heroPulse 4s ease-in-out infinite alternate;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: rgba(226, 226, 236, 0.7);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+/* animations for the hero text */
+@keyframes heroPulse {
+  0% {
+    text-shadow: 
+      0 0 10px rgba(79, 195, 247, 0.8),
+      0 0 20px rgba(79, 195, 247, 0.4);
+  }
+  100% {
+    text-shadow: 
+      0 0 15px rgba(96, 255, 79, 0.9),
+      0 0 30px rgba(79, 255, 116, 0.5),
+      0 0 50px rgba(79, 255, 109, 0.3);
+  }
+}
+
+@keyframes floatSun {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* --- section title / dividers --- */
+/* container for the heading to center everything with flexbox */
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  margin: 40px 0;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* glowing line on both sides */
+.section-title::before,
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #4fc3f7, transparent);
+  box-shadow: 0 0 8px rgba(79, 195, 247, 0.6);
+}
+
+/* smaller sub-heading with shorter, subtler side lines */
+.showcase-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 3rem;
+  color: #4fc3f7;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 15px 0;
+}
+
+.showcase-title::before,
+.showcase-title::after {
+  content: "";
+  flex: 0.3; /* Shorter line length compared to main section titles */
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.5), transparent);
+}
+
+/* compact feature card for showcase items */
+.showcase-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 18px 22px;
+  background: rgba(20, 20, 38, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.showcase-feature:hover {
+  border-color: rgba(79, 195, 247, 0.6);
+  box-shadow: 0 5px 15px rgba(79, 195, 247, 0.15);
+  transform: translateY(-2px);
+}
+
+/* background for features */
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 40px auto;
+  margin-top: 5vh;
+  margin-bottom: 10vh;
+  max-width: 900px;
+  padding: 25px;
+  height: auto;
+  background: rgba(20, 20, 38, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5vw;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+/* hover effect: glows and floats upward slightly */
+.feature:hover {
+  transform: translateY(-5px);
+  border-color: #4fc3f7;
+  box-shadow: 0 10px 25px rgba(79, 195, 247, 0.2);
+}
+
+/* --- the skills & tools grids --- */
+.skills-grid,
+.tools-grid {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3.5vh;
+  margin-top: 2.5vh;
+  margin-bottom: 5vh;
+  align-items: center;
+}
+
+.img-grid {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 6vh;
+  margin-top: 2.5vh;
+  margin-bottom: 5vh;
+  align-items: center;
+}
+
+.img-node {
+  position: relative;
+  cursor: help;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.img-node img {
+  width: 25vw;
+  height: 25vh;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.1));
+  transition: filter 0.3s ease;
+}
+
+.node {
+  position: relative;
+  cursor: help;
+  padding: 15px 25px;
+  border-radius: 2.5vh;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s ease;
+  width: 3vwh;
+  text-align: center;
+}
+
+/* 
+ * color modifiers: 
+ * green = OK, orange = iffy, and red = still very unsure 
+ * */
+.green {
+  border: 1px solid rgba(15, 255, 0, 0.2);
+  box-shadow: 0 0 10px #53ff00;
+}
+.orange {
+  border: 1px solid rgba(255, 141, 0, 0.2);
+  box-shadow: 0 0 10px #ff8400;
+}
+.red {
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  box-shadow: 0 0 10px #ff0000;
+}
+
+.node:after,
+.img-node:after{
+  content: attr(data-tooltip); /*take the text from the HTML attribute*/
+  position: absolute;
+  bottom: 125%; /*put it above the current item*/
+  left: 50%;
+  transform: translateX(-50%) scale(0.9); /*center it horizontally, and shrink it just a smidge*/
+
+  /* box styling*/
+  width: 220px;
+  padding: 10px;
+  background: #141426;
+  color: #e2e2ec;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  pointer-events: none; /*box will not interrupt mouse interaction*/
+
+  /*transition*/
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.node:hover{
+  border-color: 1px solid rgba(255, 230, 0, 0.2);
+  box-shadow: 0 0 10px #faff00;
+  transform: translateY(-0.2vh);
+}
+
+.img-node:hover {
+  transform: translateY(-4px);
+}
+
+.img-node:hover img {
+  filter: drop-shadow(0 0 12px rgba(79, 195, 247, 0.6));
+}
+
+/* the help box; appears after the hover*/
+.node:hover::after,
+.img-node:hover:after{
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* --- project system  --- */
+.system-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.planet {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.planet-sphere {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.planet.active .core {
+  background: radial-gradient(circle at 30% 30%, #4fc3f7, #0288d1, #012d4a);
+  background-size: 200% 200%;
+  box-shadow:
+    0 0 30px rgba(7, 166, 255, 0.5),
+    inset -10px -10px 20px rgba(0, 0, 0, 0.6);
+
+  /* multiple animations: one for floating, one for a pulsing atmosphere */
+  animation:
+    floatPlanet 5s ease-in-out infinite,
+    pulseGlow 3s ease-in-out infinite alternate;
+}
+
+/* --- placeholder planets --- */
+.planet.placeholder .planet-sphere {
+  border: 2px dashed rgba(255, 255, 255, 0.15);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+
+  /* different timing so they don't sync up */
+  animation:
+    floatPlanet 7s ease-in-out infinite,
+    rotateHologram 12s linear infinite;
+}
+
+@keyframes floatPlanet {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 20px rgba(7, 166, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 40px rgba(7, 166, 255, 0.7);
+  }
+}
+
+@keyframes rotateHologram {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* the surface */
+#surface {
+  background: linear-gradient(to bottom, #0b0b14 60%, #141426 100%);
+  justify-content: flex-end;
+  position: relative;
+}
+
+.horizon {
+  position: absolute;
+  bottom: -50px;
+  width: 120%;
+  height: 25vh;
+  background: #1a1a3a;
+  border-radius: 50% 50% 0 0;
+  box-shadow: inset 0 20px 30px rgba(247, 211, 79, 0.04);
+}
+
+.surface-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 2vh;
+}
+
+.transmission-btn {
+  position: relative;
+  cursor: pointer;
+  padding: 1vh 2vw;
+  margin-top: 2vh;
+  border-radius: 2.5vh;
+  background: rgba(255, 255, 255, 0.02);
+  width: 3vwh;
+}
