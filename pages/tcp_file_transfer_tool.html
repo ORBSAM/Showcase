@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TCP File Transfer Tool | Samantha U</title>
+        <link rel="stylesheet" href="../css/styles.css" />
+    </head>
+    <body>
+        <!-- star background yet again -->
+        <div class="stars-layer-one"></div>
+        <div class="stars-layer-two"></div>
+
+        <!-- Left Sidebar Navigation -->
+        <nav class="side-nav">
+            <a href="../index.html"><span>⌂</span> Home</a>
+            <a href="#overview"><span>🛰</span> Overview</a>
+            <a href="#breakdown"><span>🛠</span> Tech Stack</a>
+            <a href="#telemetry"><span>🙮</span> Preview</a>
+            <a href="#highlights"><span>★</span> Highlights</a>
+        </nav>
+
+        <main style="max-width: 900px; margin: 0 auto; padding: 60px 20px">
+            <!-- the "hero" header -->
+            <header class="hero-title-container" style="padding: 40px 0">
+                <h1 class="hero-title">Project: NO USB!</h1>
+                <p class="hero-subtitle">Custom TCP Communication Tool</p>
+            </header>
+
+            <!-- overview -->
+            <section id="overview" class="feature">
+                <h2 class="section-title">Mission Brief</h2>
+                <p>
+                    A simple TCP tool that communicates between two different platforms... and sends files of the user's
+                    choosing. Both machines must be running on the same network, and have a port available.
+                </p>
+            </section>
+
+            <!-- what did i use? -->
+            <section id="breakdown" class="feature">
+                <h2 class="section-title">Tech Stack</h2>
+                <div
+                    class="skills-inside-feature"
+                    style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap">
+                    <div
+                        class="node green"
+                        data-tooltip="The core language; all communication sockets are set up through C as well.">
+                        C++
+                    </div>
+                    <div class="node red" data-tooltip="Better than wxWidgets, and verstile between platforms.">
+                        DearImGui
+                    </div>
+                </div>
+            </section>
+
+            <!-- the screenshot gallery -->
+            <section id="telemetry">
+                <h2 class="section-title">Visual Telemetry</h2>
+
+                <div class="showcase-feature">
+                    <h3 class="showcase-title">Main View</h3>
+                    <div class="screenshot-frame">
+                        <img src="../images/linux_view.png" alt="General Overview" />
+                    </div>
+                    <p class="screenshot-caption">Full screenshot of the TCP GUI on Fedora. Not connected. ohh scary IP \(”˚☐˚)/</p>
+                </div>
+
+                <!-- dual screenshots -->
+                <div class="screenshot-grid">
+                    <div class="showcase-feature">
+                        <h3 class="showcase-title">Windows</h3>
+                        <div class="screenshot-frame">
+                            <img src="../images/windows_running.png" alt="Windows Overview" />
+                        </div>
+                        <p class="screenshot-caption">Window on my Windows machine. Connected.</p>
+                    </div>
+
+                    <div class="showcase-feature">
+                        <h3 class="showcase-title">Linux/Unix</h3>
+                        <div class="screenshot-frame">
+                            <img src="../images/linux_view_running.png" alt="Unix/Linux Overview" />
+                        </div>
+                        <p class="screenshot-caption">
+                            The window, on my Fedora machine. Connected. Received screenshot you see on the left in this
+                            preview.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- key features -->
+            <section id="highlights">
+                <h2 class="section-title">Key Highlights</h2>
+
+                <div class="showcase-feature">
+                    <h3 class="showcase-title">01. The Core Challenge</h3>
+                    <p>
+                        What was to be tackled? Well, since I have two laptops... I needed a simple way to have a
+                        universal tool (aside from a USB) to send reasonably sized files between the two.
+                    </p>
+                </div>
+
+                <div class="showcase-feature">
+                    <h3 class="showcase-title">02. The Solution & Architecture</h3>
+                    <p>
+                        C++. Loved by Linux and... well, functions on Windows. Using CMake and other universal GUI
+                        libraries, I was able to craft a program that allowed me to communicate to my other machine...
+                        if it was on the same network.
+                    </p>
+                </div>
+
+                <div class="showcase-feature">
+                    <h3 class="showcase-title">03. Key Takeaway / Future Plans</h3>
+                    <p>
+                        It was fun trying to get this to work; learning how DearImGui worked, and how it is
+                        <i>kinda</i> better than wxWidgets... I think I might avoid doing lower-level GUI programming in
+                        the future unless it is absolutely necessary. One thing I'd like to note is how annoying how
+                        Wayland calls windows; literally made it near impossible to open up a file prompt. <br>
+                        On another note, this project complements well with my Intro to Networks class. Hope I can understand
+                        how sockets work like this in-depth at a later time.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

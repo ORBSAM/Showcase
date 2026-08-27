@@ -13,9 +13,9 @@
 
     <!-- left navbar w/ a button back home -->
     <nav class="side-nav">
-      <a href="../index.html"><span>🏠</span> Home</a>
-      <a href="#overview"><span>📖</span> Overview</a>
-      <a href="#showcase"><span>🛠️</span> Showcase</a>
+      <a href="../index.html"><span>⌂</span> Home</a>
+      <a href="#overview"><span>🕮</span> Overview</a>
+      <a href="#showcase"><span>🛠</span> Showcase</a>
     </nav>
 
     <!-- change the padding and margin here for better viewing -->
@@ -26,10 +26,12 @@
       <!-- describing C, C++, and C# -->
       <section id="overview" class="feature">
         <div>
-          <h2 class="section-title">C overview</h2>
+          <h2 class="section-title">C Family overview</h2>
           <h3>
             C is objectively better than a lot of languages, mainly in terms of speed and efficiency. Only real issue is
-            the lack of libraries and true flexibility... which is where C++ comes in.
+            the lack of libraries and true flexibility... which is where C++ comes in. C# is just kinda there because
+            Microsoft couldn't get Java ¯\(ツ)/¯. By no means a bad language... it's main usage appears to be .NET (or,
+            alternatively, you can use Visual Basic ⛈)
           </h3>
         </div>
       </section>
@@ -44,10 +46,15 @@
           </h3>
           <div class="showcase-feature">
             <h2>Game of Life</h2>
-            <h4>Game of life but trees and burning in C. I wish I kept the source code for this.</h4>
+            <h4>
+              Game of life but trees and burning in C. I wish I kept the source code for this. I might reconsider doing
+              it for C# just for the novelty of it, and have it as an endless screensaver in C++/C perhaps. One funny
+              thing I found on <a href="https://f-droid.org/packages/me.haroldmartin.golwallpaper/">F-Droid</a> was a
+              cute screensaver that takes the Game Of Life and updates it every so often.
+            </h4>
           </div>
           <div class="showcase-feature">
-            <h2>TCP Receiver</h2>
+            <h2><a href="tcp_file_transfer_tool.html">TCP Receiver</a></h2>
             <h4>
               Using a whole bunch of C++ libraries and DearImGui, I made a simple TCP receiver and sender that...
               receives and sends small files.
@@ -57,15 +64,26 @@
             <h2>Metadata Scraper/Remover</h2>
             <h4>
               Removes or modifies the metadata of a user-selected file. Uses exifdata and other libraries. wxWidgets is
-              not really easy to setup and use on Windows...
+              not really easy to setup and use on Windows... will consider trying this on Linux instead in the future.
             </h4>
           </div>
           <div class="showcase-feature">
             <h2>Screensavers</h2>
             <h4>
               Already made a few screensavers in C#, one major one that includes editing is Mental States. I made a
-              lesser version called "Narcolepsy" for a project in Biology.
+              lesser version called "Narcolepsy" for a project in Biology. Currently crafting another for Linux... as
+              Wayland is really annoying about it for some reason.
             </h4>
+            <a href="https://github.com/ORBSAM/MentalStates"><h4>Mental States</h4></a>
+            <h5>
+              Simple screensaver that utilizes C# to display various bouncing balls across your screen. Oh, and you can
+              click to make a shockwave. All the colors are able to be edited via a pop-up menu.
+            </h5>
+            <h4>"Neofetch" Linux Screensaver</h4>
+            <h5>
+              A dabble into the world of Linux programming and dealing with the plentiful amounts of GUI libraries...
+              also finding a neat workaround to Wayland's bad idle detection system.
+            </h5>
           </div>
         </div>
       </section>

@@ -27,11 +27,11 @@ footer {
   position: relative;
   padding: 40px 20px;
   height: auto;
-  scroll-snap-align: start; /* Snaps the top of each section to the top of the screen */
-  overflow: hidden; /* Keeps things contained */
+  scroll-snap-align: start; /* snaps the top of each section to the top of the screen */
+  overflow: hidden; /* keeps things contained */
 }
 
-/* --- base Styles Shared by Both Layers --- */
+/* --- base styles shared by both layers --- */
 .stars-layer-one,
 .stars-layer-two {
   position: fixed;
@@ -44,7 +44,7 @@ footer {
   pointer-events: none;
 }
 
-/* --- Layer 1: Medium Stars (Slower Twinkle) --- */
+/* --- layer 1: medium stars (slower twinkle) --- */
 .stars-layer-one {
   box-shadow:
     12vw 15vh 0 #fff,
@@ -151,7 +151,7 @@ footer {
   animation: floatSun 6s ease-in-out infinite;
 }
 
-/* Container to center and anchor all hero visuals */
+/* container to center and anchor all "hero" visuals */
 .hero-title-container {
   position: relative;
   display: flex;
@@ -162,15 +162,15 @@ footer {
   text-align: center;
 }
 
-/* Standout Title Text */
+/* standout title text */
 .hero-title {
   font-size: 3.5rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 6px;
   color: #ffffff;
-  /* Glowing text shadow layer */
-  text-shadow: 
+  /* glowing text shadow layer */
+  text-shadow:
     0 0 10px rgba(79, 195, 247, 0.8),
     0 0 20px rgba(79, 195, 247, 0.4),
     0 0 40px rgba(79, 195, 247, 0.2);
@@ -190,12 +190,12 @@ footer {
 /* animations for the hero text */
 @keyframes heroPulse {
   0% {
-    text-shadow: 
+    text-shadow:
       0 0 10px rgba(79, 195, 247, 0.8),
       0 0 20px rgba(79, 195, 247, 0.4);
   }
   100% {
-    text-shadow: 
+    text-shadow:
       0 0 15px rgba(96, 255, 79, 0.9),
       0 0 30px rgba(79, 255, 116, 0.5),
       0 0 50px rgba(79, 255, 109, 0.3);
@@ -251,13 +251,15 @@ footer {
 .showcase-title::before,
 .showcase-title::after {
   content: "";
-  flex: 0.3; /* Shorter line length compared to main section titles */
+  flex: 0.3; /* shorter line length compared to main section titles */
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.5), transparent);
 }
 
 /* compact feature card for showcase items */
 .showcase-feature {
+  width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -267,7 +269,12 @@ footer {
   background: rgba(20, 20, 38, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
+  box-sizing: border-box;
   transition: all 0.3s ease;
+
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .showcase-feature:hover {
@@ -367,7 +374,7 @@ footer {
 }
 
 .node:after,
-.img-node:after{
+.img-node:after {
   content: attr(data-tooltip); /*take the text from the HTML attribute*/
   position: absolute;
   bottom: 125%; /*put it above the current item*/
@@ -391,7 +398,7 @@ footer {
   transition: all 0.2s ease-in-out;
 }
 
-.node:hover{
+.node:hover {
   border-color: 1px solid rgba(255, 230, 0, 0.2);
   box-shadow: 0 0 10px #faff00;
   transform: translateY(-0.2vh);
@@ -407,7 +414,7 @@ footer {
 
 /* the help box; appears after the hover*/
 .node:hover::after,
-.img-node:hover:after{
+.img-node:hover:after {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
@@ -510,10 +517,122 @@ footer {
 
 .transmission-btn {
   position: relative;
-  cursor: pointer;
-  padding: 1vh 2vw;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 14px 32px;
   margin-top: 2vh;
-  border-radius: 2.5vh;
-  background: rgba(255, 255, 255, 0.02);
-  width: 3vwh;
+
+  /* reset the link styling here */
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #53ff00; /*matches green node glow */
+
+  /* background and border */
+  background: rgba(83, 255, 0, 0.05);
+  border: 1px solid rgba(83, 255, 0, 0.5);
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+
+  /* the pulse animation for the "beacon" */
+  animation: fullBeaconPulse 2.5s infinite;
+  transition: all 0.3s ease;
+}
+
+/* static inner dot that flashes; almost like its recording something */
+.beacon-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #53ff00;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #53ff00;
+}
+
+/* when hovered... */
+.transmission-btn:hover {
+  animation: none; /* stops flashing for readability */
+  background: rgba(83, 255, 0, 0.2);
+  border-color: #53ff00;
+  color: #ffffff;
+  box-shadow: 0 0 25px rgba(83, 255, 0, 0.8);
+  transform: translateY(-2px);
+}
+
+.transmission-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 0 10px rgba(83, 255, 0, 0.5);
+}
+
+/* keyframes to make the entire button flash and glow */
+@keyframes fullBeaconPulse {
+  0% {
+    /* box shadow is glow (increases/decreases), while the border color is that green */
+    box-shadow: 0 0 0 0 rgba(83, 255, 0, 0.6);
+    border-color: rgba(83, 255, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px 8px rgba(83, 255, 0, 0.2);
+    border-color: rgba(83, 255, 0, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(83, 255, 0, 0);
+    border-color: rgba(83, 255, 0, 0.4);
+  }
+}
+
+/* container for 2 side-by-side screenshots on wide screens */
+.screenshot-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.screenshot-grid .showcase-feature {
+  flex: 1;
+  min-width: 280px; /* wraps to a vertical stack onn mobile screens */
+}
+
+/* stylized frame for screenshots */
+.screenshot-frame {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #0b0b14;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.screenshot-frame img {
+  width: 100%;
+  height: auto;
+  display: block; /* removes unwanted white space below images */
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* subtle zoom and glow when hovered on */
+.showcase-feature:hover .screenshot-frame {
+  border-color: rgba(79, 195, 247, 0.5);
+  box-shadow: 0 6px 20px rgba(79, 195, 247, 0.2);
+}
+
+.showcase-feature:hover .screenshot-frame img {
+  transform: scale(1.02); /* slight zoom effect on image hover */
+}
+
+/* the captions under screenshots */
+.screenshot-caption {
+  font-size: 0.85rem;
+  color: rgba(226, 226, 236, 0.7);
+  text-align: center;
+  margin-top: 8px;
 }
