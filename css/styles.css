@@ -493,26 +493,42 @@ footer {
 
 /* the surface */
 #surface {
-  background: linear-gradient(to bottom, #0b0b14 60%, #141426 100%);
-  justify-content: flex-end;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 25vh;
+  max-height: 30vh;
+  padding: 80px 20px;
+  box-sizing: border-box;
+  overflow: hidden; /* keeps wide horizon curves from creating horizontal scrollbars */
+  
+  background: linear-gradient(to bottom, #0b0b14 60%, #141426 100%);
 }
 
 .horizon {
   position: absolute;
-  bottom: -50px;
-  width: 120%;
-  height: 25vh;
-  background: #1a1a3a;
-  border-radius: 50% 50% 0 0;
-  box-shadow: inset 0 20px 30px rgba(247, 211, 79, 0.04);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150%; /* make it wider than 100% so the curvature spans wide screens */
+  height: 200px;
+  border-top: 2px solid rgba(79, 195, 247, 0.5);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0; /* creates the curved planet horizon curve */
+  background: radial-gradient(ellipse at top, rgba(79, 195, 247, 0.15), transparent 70%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .surface-content {
   position: relative;
-  z-index: 2;
+  z-index: 2; /* text should sit on horizon */
   text-align: center;
-  margin-bottom: 2vh;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .transmission-btn {
