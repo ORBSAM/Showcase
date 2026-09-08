@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Wayland Screensaver | Samantha U</title>
+        <link rel="stylesheet" href="../../css/styles.css" />
+    </head>
+    <body>
+        <!-- star background yet again -->
+        <div class="stars-layer-one"></div>
+        <div class="stars-layer-two"></div>
+
+        <!-- Left Sidebar Navigation -->
+        <nav class="side-nav">
+            <a href="../index.html"><span>⌂</span> Home</a>
+            <a href="#overview"><span>🛰</span> Overview</a>
+            <a href="#breakdown"><span>🛠</span> Tech Stack</a>
+            <a href="#telemetry"><span>🙮</span> Preview</a>
+            <a href="#highlights"><span>★</span> Highlights</a>
+        </nav>
+
+        <main style="max-width: 900px; margin: 0 auto; padding: 60px 20px">
+            <!-- the "hero" header -->
+            <header class="hero-title-container" style="padding: 40px 0">
+                <h1 class="hero-title">Project: Screesave</h1>
+                <p class="hero-subtitle">Custom Screesaver for Wayland</p>
+            </header>
+
+            <!-- overview -->
+            <section id="overview" class="feature">
+                <h2 class="section-title">Mission Brief</h2>
+                <p>
+                    Simple, make a cool screensaver that isn't just a boring black screen. It's been cited by the
+                    creator of xScreensaver that Wayland does not work for his application anymore (xScreensaver). So, I
+                    took it upon myself to make a cool screensaver for my Fedora machine in the Wayland (Gnome)
+                    environment.
+                </p>
+                <p>You may ask, &quot;Why not just use Cinnamon? xScreensaver works there?&quot;</p>
+                <p>
+                    Fantastic question with a fairly simple answer: it crashes when it sleeps because the drivers will
+                    never work with my Nvidia card. It's me finding a solution to a traditional Linux™ problem.
+                </p>
+            </section>
+
+            <!-- what did i use? -->
+            <section id="breakdown" class="feature">
+                <h2 class="section-title">Tech Stack</h2>
+                <div
+                    class="skills-inside-feature"
+                    style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap">
+                    <div class="node green" data-tooltip="The core language; all of the GUI libraries was used here.">
+                        C++
+                    </div>
+                    <div class="node red" data-tooltip="Worked very well here, but I prefer to not use it if possible.">
+                        Python
+                    </div>
+                </div>
+            </section>
+
+            <!-- the screenshot gallery -->
+            <section id="telemetry">
+                <h2 class="section-title">Visual Telemetry</h2>
+
+                <div class="showcase-feature">
+                    <h3 class="showcase-title">Main View</h3>
+                    <div class="screenshot-frame">
+                        <img src="../../images/screensaver_fedora.png" alt="General Overview" />
+                    </div>
+                    <p class="screenshot-caption">
+                        Screensaver, running. Shows cores, BLE devices, and a chart showcasing what is in the BLE
+                        (bluetooth) range.
+                    </p>
+                    <p class="screenshot-caption">
+                        Interestingly enough, a lot of Computer Science students use iPhones (╭ರ_•́).
+                    </p>
+                </div>
+            </section>
+
+            <!-- key features -->
+            <section id="highlights">
+                <h2 class="section-title">Key Highlights</h2>
+
+                <div class="showcase-feature">
+                    <h3 class="showcase-title">01. The Core Challenge</h3>
+                    <p>
+                        Getting it running properly, really. Wayland can't really have a true screensaver, so some
+                        &quot;trickery&quot; has to be done to even have a facsimile of a screensver. Fortunately, there
+                        is a way to detect idle-ness and have something running... you just need to disable the screen
+                        blacken-ing after a certain amount of time (as, that's the new "screensaver").
+                    </p>
+                </div>
+
+                <div class="showcase-feature">
+                    <h3 class="showcase-title">02. The Solution & Architecture</h3>
+                    <p>
+                        Using Cairo and other GTK libraries utilized by other Wayland applications, I managed to make a
+                        "screensaver" that runs over most windows... but doesn't lock the screen after activation and
+                        remains until the user (me) moves their mouse or presses a key. So while this isn't a real
+                        solution, it's pretty and it works. Don't judge me for it.
+                    </p>
+                </div>
+
+                <div class="showcase-feature">
+                    <h3 class="showcase-title">03. Key Takeaway / Future Plans</h3>
+                    <p>
+                        Cinnamon has a much better environment for screensavers, no doubt about it (I have used X11 for
+                        GhostBSD in the past). But, it hates me so I refuse to use it unless absolutely necessary.
+                    </p>
+                    <p>
+                        If the Linux™ world worked perfectly, I wouldn't be finding out about these tools, and
+                        discovering how to fend for myself in this still relatively new landscape.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
